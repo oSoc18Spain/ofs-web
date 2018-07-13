@@ -21,6 +21,6 @@
         <div class="img__carrousel-list">
             <img src="{{picture}}" ng-click="openImg($event, $index)" alt="" ng-repeat="picture in pictures track by $index">
         </div>
-        <i class="fa fa-angle-right swipe swipe-right" aria-hidden="true" id="swipe-left"></i>
+        <i class="fa fa-angle-right swipe swipe-right" ng-click="swiperight()" aria-hidden="true" id="swipe-left"></i>
     </div>
 </div>

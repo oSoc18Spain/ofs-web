@@ -881,32 +881,46 @@ app.controller('imagesController', [
     $scope.pictures = pictures;
     $scope.showImg = false;
 
-    let currentImgIndex = 0;
+    let busy = false;
     $scope.swiperight = () => {
       let currentMargin = $('.img__carrousel-list').css('marginLeft');
       currentMargin = currentMargin.substring(0, currentMargin.length - 2);
       let min = window.innerWidth / 2 - 45;
-      let max = min + currentImgIndex * $(`.img__carrousel img`).width();
+      let max = min - $(`.img__carrousel img`).width() * $scope.pictures.length;
+      let futureMargin =
+        parseInt(currentMargin) - parseInt(window.innerHeight) * 0.7;
+
+      if (!busy) {
+        if (futureMargin <= max) {
+          $('.img__carrousel-list').css('marginLeft', `${max}px`);
+        } else {
+          $('.img__carrousel-list').css('marginLeft', `${futureMargin}px`);
+        }
+        busy = true;
+        setTimeout(() => {
+          busy = false;
+        }, 300);
+      }
     };
     $scope.swipeleft = () => {
       let currentMargin = $('.img__carrousel-list').css('marginLeft');
       currentMargin = currentMargin.substring(0, currentMargin.length - 2);
-      let min = window.innerWidth / 2 - 45;
+      let min = 50;
 
       let futureMargin =
-        parseInt(currentMargin) + parseInt(window.innerHeight) * 0.7;
-      console.log('min ' + min);
-      console.log('fm ' + futureMargin);
+        parseInt(currentMargin) + parseInt(window.innerWidth) * 0.7;
 
-      if (currentMargin != min) {
-        if (futureMargin > min) {
+      if (!busy) {
+        if (futureMargin >= min && !busy) {
           $('.img__carrousel-list').css('marginLeft', `${min}px`);
         } else {
           $('.img__carrousel-list').css('marginLeft', `${futureMargin}px`);
         }
+        busy = true;
+        setTimeout(() => {
+          busy = false;
+        }, 300);
       }
-
-      //$('.img__carrousel-list').css('marginLeft', 0);
     };
     $scope.openImg = (event, index) => {
       currentImgIndex = index;
@@ -921,9 +935,10 @@ app.controller('imagesController', [
 
         let offset =
           index * $(`.img__carrousel img:nth-child(${index + 1})`).width();
-        let margin = 'calc(50vw - 45px - ' + offset + 'px)';
-
-        $('.img__carrousel-list').css('marginLeft', margin);
+        let margin = window.innerWidth * 0.5 - 45 - offset;
+        if (margin < 50)
+          $('.img__carrousel-list').css('marginLeft', margin + 'px');
+        else $('.img__carrousel-list').css('marginLeft', '55px');
 
         $(`.img__carrousel img:nth-child(${index + 1})`).css({
           transform: 'scale(1.2)',
