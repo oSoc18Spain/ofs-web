@@ -1,8 +1,12 @@
 <link href="css/images.css" rel="stylesheet" type="text/css">
 
 <ul class="nav nav-tabs nav-tabs__images">
-    <li role="presentation" class="active"><a href="#">Imágenes</a></li>
-    <li role="presentation"><a href="#">Configuración</a></li>
+    <li role="presentation" class="active">
+        <a href="#">Imágenes</a>
+    </li>
+    <li role="presentation">
+        <a href="#">Configuración</a>
+    </li>
 </ul>
 
 <div class="pictures">
@@ -12,4 +16,9 @@
 <div class="picture-full-screen" ng-if="showImg">
     <div class="overlay-close" ng-click="closeImg()"></div>
     <img id="img-fullscreen" class="img-fullscreen" src="{{imageUrl}}" alt="Imágen de ">
+    <div class="img__carrousel">
+        <i class="fa fa-angle-left swipe swipe-left" aria-hidden="true" id="swipe-left"></i>
+        <img src="{{picture}}" ng-click="openImg($event, $index)" alt="" ng-repeat="picture in pictures track by $index">
+        <i class="fa fa-angle-right swipe swipe-right" aria-hidden="true" id="swipe-left"></i>
+    </div>
 </div>

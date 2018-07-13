@@ -43,6 +43,40 @@
   object-fit: cover;
   position: absolute;
   left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  top: 40%;
+  transform: translate(-50%, -40%);
+}
+.img__carrousel {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 10001;
+  width: 100%;
+  background: #272727;
+}
+.img__carrousel img {
+  max-width: 100px;
+  margin: 10px 5px;
+}
+.swipe {
+  position: absolute;
+  border-radius: 50%;
+  background: #e9e9e9;
+  color: #272727;
+  padding: 5px 12px;
+  font-size: 20px;
+  cursor: pointer;
+}
+.swipe:hover {
+  transition: 0.3s all ease;
+  background: #ccc;
+}
+.swipe-left {
+  left: 20px;
+}
+.swipe-right {
+  right: 20px;
 }
