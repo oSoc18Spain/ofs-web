@@ -880,7 +880,36 @@ app.controller('imagesController', [
     }
     $scope.pictures = pictures;
     $scope.showImg = false;
+
+    let currentImgIndex = 0;
+    $scope.swiperight = () => {
+      let currentMargin = $('.img__carrousel-list').css('marginLeft');
+      currentMargin = currentMargin.substring(0, currentMargin.length - 2);
+      let min = window.innerWidth / 2 - 45;
+      let max = min + currentImgIndex * $(`.img__carrousel img`).width();
+    };
+    $scope.swipeleft = () => {
+      let currentMargin = $('.img__carrousel-list').css('marginLeft');
+      currentMargin = currentMargin.substring(0, currentMargin.length - 2);
+      let min = window.innerWidth / 2 - 45;
+
+      let futureMargin =
+        parseInt(currentMargin) + parseInt(window.innerHeight) * 0.7;
+      console.log('min ' + min);
+      console.log('fm ' + futureMargin);
+
+      if (currentMargin != min) {
+        if (futureMargin > min) {
+          $('.img__carrousel-list').css('marginLeft', `${min}px`);
+        } else {
+          $('.img__carrousel-list').css('marginLeft', `${futureMargin}px`);
+        }
+      }
+
+      //$('.img__carrousel-list').css('marginLeft', 0);
+    };
     $scope.openImg = (event, index) => {
+      currentImgIndex = index;
       $scope.showImg = true;
       $scope.imageUrl = event.originalTarget.attributes[0].textContent;
 
