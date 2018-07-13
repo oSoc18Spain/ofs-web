@@ -1,9 +1,4 @@
 <link href="css/images.css" rel="stylesheet" type="text/css">
-<script type='text/javascript' src='unitegallery/js/unitegallery.min.js'></script> 
-		
-<link rel='stylesheet' href='unitegallery/css/unite-gallery.css' type='text/css' /> 
-<script type='text/javascript' src='unitegallery/themes/default/ug-theme-default.js'></script> 
-<link rel='stylesheet' href='unitegallery/themes/default/ug-theme-default.css' type='text/css' /> 
 
 <ul class="nav nav-tabs nav-tabs__images">
     <li role="presentation" class="active"><a href="#">Imágenes</a></li>
@@ -16,5 +11,5 @@
 
 <div class="picture-full-screen" ng-if="showImg">
     <div class="overlay-close" ng-click="closeImg()"></div>
-    <img src="" alt="Imágen de ">
+    <img id="img-fullscreen" class="img-fullscreen" src="{{imageUrl}}" alt="Imágen de ">
 </div>

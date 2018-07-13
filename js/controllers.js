@@ -703,14 +703,15 @@ app.controller('imagesController', ['$scope', '$sce', '$http', function($scope, 
 	for(let i = 1; i <= 11; i++){
 		pictures[i - 1] = `img_test/img (${i}).jpg`
 	}
-	$scope.pictures = pictures
-	$scope.showImg = false
+	$scope.pictures = pictures;
+	$scope.showImg = false;
 	$scope.openImg = (event, index) => {
 		$scope.showImg = true
+		$scope.imageUrl = event.originalTarget.attributes[0].textContent;
 	}
 
 	$scope.closeImg = () => {
-		console.log("adfsklfajdsl")
+		console.log("fsd")
 		$scope.showImg = false
 	}
 }]);
