@@ -884,10 +884,16 @@ app.controller('imagesController', [
       $scope.showImg = true;
       $scope.imageUrl = event.originalTarget.attributes[0].textContent;
 
-      $(`.img__carrousel img`).css('transform', 'scale(1)');
-      $(`.img__carrousel img:nth-child(${index + 2})`).css({
-        transform: 'scale(1.2)'
-      });
+      setTimeout(()=>{
+        $(`.img__carrousel img`).css({
+          transform: 'scale(1)',
+          margin: '10px 5px'
+        });
+        $(`.img__carrousel img:nth-child(${index + 1})`).css({
+          transform: 'scale(1.2)',
+          margin: '0 10px'
+        });
+      },1)
     };
 
     $scope.closeImg = () => {

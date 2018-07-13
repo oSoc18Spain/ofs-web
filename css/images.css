@@ -31,35 +31,41 @@
   width: 100vw;
   position: fixed;
   z-index: 10000;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.85);
   top: 0;
   left: 0;
 }
 
 .img-fullscreen {
   z-index: 10001;
-  width: calc(100vw - 10%);
   height: calc(100vh - 20%);
-  object-fit: cover;
-  position: absolute;
+  position: fixed;
   left: 50%;
-  top: 40%;
-  transform: translate(-50%, -40%);
+  top: 0;
+  transform: translate(-50%, 50px);
 }
 .img__carrousel {
+ 
+  position: fixed;
+  overflow: hidden;
+  top:0;
+  margin-top: calc(100vh - 100px);
+  left: 0;
+  z-index: 10001;
+  height: 100px;
+  background: #aaa;
+}
+.img__carrousel-list{
   display: flex;
   flex-direction: row;
   align-items: center;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  z-index: 10001;
-  width: 100%;
-  background: #272727;
+  overflow: hidden;  
+  margin-left: 0;
 }
 .img__carrousel img {
   max-width: 100px;
   margin: 10px 5px;
+  transition: .3s all ease;
 }
 .swipe {
   position: absolute;
@@ -69,6 +75,7 @@
   padding: 5px 12px;
   font-size: 20px;
   cursor: pointer;
+  z-index: 10002;
 }
 .swipe:hover {
   transition: 0.3s all ease;
@@ -78,5 +85,5 @@
   left: 20px;
 }
 .swipe-right {
-  right: 20px;
+  left: calc(100vw - 65px);
 }
