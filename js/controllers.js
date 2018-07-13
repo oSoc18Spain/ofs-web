@@ -884,16 +884,23 @@ app.controller('imagesController', [
       $scope.showImg = true;
       $scope.imageUrl = event.originalTarget.attributes[0].textContent;
 
-      setTimeout(()=>{
+      setTimeout(() => {
         $(`.img__carrousel img`).css({
           transform: 'scale(1)',
           margin: '10px 5px'
         });
+
+        let offset =
+          index * $(`.img__carrousel img:nth-child(${index + 1})`).width();
+        let margin = 'calc(50vw - 45px - ' + offset + 'px)';
+
+        $('.img__carrousel-list').css('marginLeft', margin);
+
         $(`.img__carrousel img:nth-child(${index + 1})`).css({
           transform: 'scale(1.2)',
           margin: '0 10px'
         });
-      },1)
+      }, 1);
     };
 
     $scope.closeImg = () => {
