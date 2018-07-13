@@ -36,3 +36,15 @@
     top: 0;
     left: 0;
 }
+
+.img-fullscreen{
+    z-index: 10001;
+    width: calc(100vw - 10%);
+    height: calc(100vh - 20%);
+    object-fit: cover;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+}
