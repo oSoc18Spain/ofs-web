@@ -923,7 +923,6 @@ app.controller('imagesController', [
       }
     };
     $scope.openImg = (event, index) => {
-      currentImgIndex = index;
       $scope.showImg = true;
       $scope.imageUrl = event.originalTarget.attributes[0].textContent;
 
