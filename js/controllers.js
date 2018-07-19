@@ -978,23 +978,41 @@ app.controller('imagesController', [
 
     $scope.closeImg = () => {
       $scope.showFullScreenImg = false;
-      $scope.isDownloadOpen = false;
+      $scope.isShareOpen = false;
     };
 
-    $scope.isDownloadOpen = false;
-    $scope.toggleDownloadOptions = () => {      
-      if($scope.isDownloadOpen)
-        $scope.showDownloadsOptions(0, 'hidden', '-20px')
+    $scope.isShareOpen = false;
+    $scope.toggleShareOptions = () => {      
+      if($scope.isShareOpen)
+        $scope.showShareOptions(0, 'hidden', '-20px')
       else
-        $scope.showDownloadsOptions(1, 'inherit', '1px')
+        $scope.showShareOptions(1, 'inherit', '1px')
     }
     
-    $scope.showDownloadsOptions = (opacity, visibility, mtop) => {
-      $scope.isDownloadOpen = !$scope.isDownloadOpen;
-      let downloadOptions = document.getElementById('downloadOptions');
-      downloadOptions.style.setProperty('opacity', opacity);
-      downloadOptions.style.setProperty('visibility', visibility);
-      downloadOptions.style.setProperty('--mtop', mtop);
+    $scope.showShareOptions = (opacity, visibility, mtop) => {
+      $scope.isShareOpen = !$scope.isShareOpen;
+      let shareOptions = document.getElementById('shareOptions');
+      shareOptions.style.setProperty('opacity', opacity);
+      shareOptions.style.setProperty('visibility', visibility);
+      shareOptions.style.setProperty('--mtop', mtop);
+    }
+
+    $scope.downloadImg = () => {      
+      var anchor = angular.element('<a/>');
+      anchor.attr({
+        href: $scope.imageUrl,
+        download: 'fileName.png'
+      })[0].click();
     }
   }
+  //https://twitter.com/intent/tweet?url=https%3A//youtu.be/zEf423kYfqk&text=bonita foto
+  //https://www.facebook.com/login.php?skip_api_login=1&api_key=87741124305&signed_next=1&next=https%3A%2F%2Fwww.facebook.com%2Fv2.7%2Fdialog%2Fshare%3Fredirect_uri%3Dhttps%253A%252F%252Fwww.youtube.com%252Ffacebook_redirect%26display%3Dpopup%26href%3Dhttps%253A%252F%252Fwww.youtube.com%252Fattribution_link%253Fa%253Da4UXAbzYmpc%2526u%253D%25252Fwatch%25253Fv%25253DzEf423kYfqk%252526feature%25253Dshare%26client_id%3D87741124305%26ret%3Dlogin&cancel_url=https%3A%2F%2Fwww.youtube.com%2Ffacebook_redirect%3Ferror_code%3D4201%26error_message%3DUser%2Bcanceled%2Bthe%2BDialog%2Bflow%23_%3D_&display=popup&locale=es_ES
 ]);
+
+//imagenes, todos los archivos y (mis archivos)
+//Añadir barra de filtros:
+//  Ordenar por fecha
+//  INPUT TEXT con usuario o tags
+
+//añadir paginacion
+//Cambiar icono descarga y compartir
