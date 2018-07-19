@@ -879,7 +879,37 @@ app.controller('imagesController', [
       pictures[i - 1] = `img_test/img (${i}).jpg`;
     }
     $scope.pictures = pictures;
-    $scope.showImg = false;
+    $scope.showFullScreenImg = false;
+    $scope.viewImages = true;
+
+    //Get conf
+    $scope.observations = [
+      {
+        'time': new Date(),
+        'user': 'Random 1',
+        'tags': ['Saturno', 'cielo']
+      },
+      {
+        'time': new Date(),
+        'user': 'Random 2',
+        'tags': ['moon', 'night', 'close-moon', 'moon', 'night', 'close-moon',]
+      }
+    ]
+    $scope.viewConf = false;
+
+    $scope.switchActiveTab = (page) => {
+      if(page === 'img'){
+        $('.img').addClass('active');
+        $('.conf').removeClass('active');
+        $scope.viewImages = true;
+        $scope.viewConf = false;
+      }else if(page === 'conf'){
+        $('.conf').addClass('active');
+        $('.img').removeClass('active');     
+        $scope.viewImages = false;
+        $scope.viewConf = true;
+      }
+    }
 
     let busy = false;
     $scope.swiperight = () => {
@@ -923,9 +953,9 @@ app.controller('imagesController', [
       }
     };
     $scope.openImg = (event, index) => {
-      $scope.showImg = true;
+      $scope.showFullScreenImg = true;
+      $scope.isDownloadOpen = false;
       $scope.imageUrl = event.originalTarget.attributes[0].textContent;
-
       setTimeout(() => {
         $(`.img__carrousel img`).css({
           transform: 'scale(1)',
@@ -947,7 +977,24 @@ app.controller('imagesController', [
     };
 
     $scope.closeImg = () => {
-      $scope.showImg = false;
+      $scope.showFullScreenImg = false;
+      $scope.isDownloadOpen = false;
     };
+
+    $scope.isDownloadOpen = false;
+    $scope.toggleDownloadOptions = () => {      
+      if($scope.isDownloadOpen)
+        $scope.showDownloadsOptions(0, 'hidden', '-20px')
+      else
+        $scope.showDownloadsOptions(1, 'inherit', '1px')
+    }
+    
+    $scope.showDownloadsOptions = (opacity, visibility, mtop) => {
+      $scope.isDownloadOpen = !$scope.isDownloadOpen;
+      let downloadOptions = document.getElementById('downloadOptions');
+      downloadOptions.style.setProperty('opacity', opacity);
+      downloadOptions.style.setProperty('visibility', visibility);
+      downloadOptions.style.setProperty('--mtop', mtop);
+    }
   }
 ]);
