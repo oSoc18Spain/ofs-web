@@ -1,4 +1,4 @@
-app.controller('mainController', function(
+app.controller('mainController', function (
   $rootScope,
   $scope,
   $location,
@@ -32,7 +32,7 @@ app.controller('mainController', function(
     $('#init').addClass('active');
   }
 
-  $('#logo').click(function() {
+  $('#logo').click(function () {
     $('.nav')
       .find('.active')
       .removeClass('active');
@@ -40,21 +40,21 @@ app.controller('mainController', function(
   });
   // End Ajuste path - navbar
 
-  $scope.goLogin = function() {
+  $scope.goLogin = function () {
     $location.path('/iniciarsesion');
     $('#init').addClass('active');
   };
 
-  $scope.goRegister = function() {
+  $scope.goRegister = function () {
     $location.path('/registrar');
   };
 
-  $scope.goRecoveryPassword = function() {
+  $scope.goRecoveryPassword = function () {
     $location.path('/recuperarcontrasena');
     // $('#init').addClass('active');
   };
 
-  $scope.goProfile = function() {
+  $scope.goProfile = function () {
     $location.path('/perfil');
     $('.nav')
       .find('.active')
@@ -62,7 +62,7 @@ app.controller('mainController', function(
     $('#profile').addClass('active');
   };
 
-  $scope.toLogout = function() {
+  $scope.toLogout = function () {
     authFactory.toLogout();
     userFactory.setIsLogged(false);
     $rootScope.isLogged = userFactory.getIsLogged();
@@ -77,7 +77,7 @@ app.controller('mainController', function(
     $('.navbar .container-fluid').removeClass('container-fluid');
   }
 
-  $(window).on('resize', function() {
+  $(window).on('resize', function () {
     if ($(window).width() < 1200) {
       $('.navbar .container').addClass('container-fluid');
       $('.navbar .container').removeClass('container');
@@ -95,7 +95,7 @@ app.controller('inicioController', [
   '$sce',
   '$http',
   'httpFactory',
-  function($scope, $sce, $http, httpFactory) {
+  function ($scope, $sce, $http, httpFactory) {
     //Estado observatorio
     $scope.state = {};
     $scope.state.weatherStation = true; //OK
@@ -182,7 +182,7 @@ app.controller('inicioController', [
 
     $scope.cameraFile = 'img/cameraObs.jpg';
     // Seleccion de camara
-    $scope.SelectCamera = function() {
+    $scope.SelectCamera = function () {
       var date = new Date();
       var time = date.getTime();
       if ($scope.camera === 'interior1') {
@@ -197,7 +197,7 @@ app.controller('inicioController', [
     //Modal imagen
     if ($(window).width() > 767) {
       var $lightbox = $('#lightbox');
-      $('.thumbnail').on('click', function(event) {
+      $('.thumbnail').on('click', function (event) {
         var $img = $(this).find('img'),
           src = $img.attr('src'),
           alt = $img.attr('alt');
@@ -212,7 +212,7 @@ app.controller('inicioController', [
         // $lightbox.find('img').css(css);
       });
 
-      $lightbox.on('shown.bs.modal', function() {
+      $lightbox.on('shown.bs.modal', function () {
         var $img = $lightbox.find('img');
 
         $lightbox.find('.modal-dialog').css({
@@ -230,20 +230,20 @@ app.controller('equipamientoController', [
   '$scope',
   '$sce',
   '$http',
-  function($scope, $sce, $http) {}
+  function ($scope, $sce, $http) {}
 ]);
 app.controller('acercaController', [
   '$scope',
   '$sce',
   '$http',
-  function($scope, $sce, $http) {}
+  function ($scope, $sce, $http) {}
 ]);
 
 app.controller('contactoController', [
   '$scope',
   '$sce',
   '$http',
-  function($scope, $sce, $http) {}
+  function ($scope, $sce, $http) {}
 ]);
 
 app.controller('registrarController', [
@@ -253,7 +253,7 @@ app.controller('registrarController', [
   '$http',
   'authFactory',
   'userFactory',
-  function($rootScope, $scope, $sce, $http, authFactory, userFactory) {
+  function ($rootScope, $scope, $sce, $http, authFactory, userFactory) {
     $('.nav')
       .find('.active')
       .removeClass('active');
@@ -278,7 +278,7 @@ app.controller('registrarController', [
     $scope.register.errorPassword = false;
     $scope.register.errorEnvio = false;
 
-    $scope.toRegister = function() {
+    $scope.toRegister = function () {
       //validar entradas
       if ($scope.user.passwordRegister1 !== $scope.user.passwordRegister2) {
         $scope.register.errorPassword = true;
@@ -329,7 +329,7 @@ app.controller('loginController', [
   'userFactory',
   'Base64',
   'httpFactory',
-  function(
+  function (
     $rootScope,
     $scope,
     $sce,
@@ -370,7 +370,7 @@ app.controller('loginController', [
 
     //funcion para conectar
     // TO DO
-    $scope.toLogin = function() {
+    $scope.toLogin = function () {
       if (
         ($scope.user.nameLogin != null) &
         ($scope.user.passwordLogin != null)
@@ -391,13 +391,13 @@ app.controller('loginController', [
         // $http.defaults.headers.common['Access-Control-Allow-Headers'] = "Content-Type, Authorization, Content-Length, X-Requested-With";
 
         $http({
-          url: 'api/login',
-          method: 'POST',
-          data: {
-            username: $scope.user.nameLogin,
-            password: $scope.user.passwordLogin
-          }
-        })
+            url: 'api/login',
+            method: 'POST',
+            data: {
+              username: $scope.user.nameLogin,
+              password: $scope.user.passwordLogin
+            }
+          })
           .then(function successCallback(response) {
             // console.log(response);
             if (response.status == 200) {
@@ -435,7 +435,7 @@ app.controller('experimentoController', [
   '$http',
   'httpFactory',
   'userFactory',
-  function($rootScope, $scope, $sce, $http, httpFactory, userFactory) {
+  function ($rootScope, $scope, $sce, $http, httpFactory, userFactory) {
     //Calendario
     $.datepicker.regional['es'] = {
       closeText: 'Cerrar',
@@ -507,7 +507,7 @@ app.controller('experimentoController', [
     $scope.endTime = undefined;
     $scope.totalTime = 0;
 
-    $scope.confirmDate = function() {
+    $scope.confirmDate = function () {
       $scope.slots = [];
       $scope.slotsSelected = [];
       $scope.dayError = false;
@@ -557,18 +557,16 @@ app.controller('experimentoController', [
             };
 
             // Evitar solapes
-            if (
-              !reservationList.some(
+            if (!reservationList.some(
                 r =>
-                  slot.startDate.isBetween(
-                    r.startDate,
-                    r.endDate,
-                    null,
-                    '[)'
-                  ) ||
-                  slot.endDate.isBetween(r.startDate, r.endDate, null, '(]')
-              )
-            ) {
+                slot.startDate.isBetween(
+                  r.startDate,
+                  r.endDate,
+                  null,
+                  '[)'
+                ) ||
+                slot.endDate.isBetween(r.startDate, r.endDate, null, '(]')
+              )) {
               // Convertir a Date para mostrar en el front
               slot.startDate = slot.startDate.toDate();
               slot.endDate = slot.endDate.toDate();
@@ -580,7 +578,7 @@ app.controller('experimentoController', [
       });
     };
 
-    $scope.selectSlot = function(slot) {
+    $scope.selectSlot = function (slot) {
       if ($scope.slotsSelected.length === 0) {
         $scope.slotsSelected.push(slot);
         $scope.startTime = slot.startDate;
@@ -602,7 +600,7 @@ app.controller('experimentoController', [
       }
     };
 
-    $scope.confirmReservation = function() {
+    $scope.confirmReservation = function () {
       $scope.reservationError = false;
       $scope.reservationOk = false;
 
@@ -635,7 +633,7 @@ app.controller('perfilController', [
   '$route',
   'httpFactory',
   'userFactory',
-  function($scope, $sce, $http, $location, $route, httpFactory, userFactory) {
+  function ($scope, $sce, $http, $location, $route, httpFactory, userFactory) {
     $scope.user = {};
     $scope.user.name = '';
     $scope.user.email = '';
@@ -670,7 +668,7 @@ app.controller('perfilController', [
         }
       });
 
-    $scope.selectElement = function(id) {
+    $scope.selectElement = function (id) {
       $scope.selectedReservationId = id;
       $scope.selectedReservation = $scope.reservations.filter(
         r => r.id === id
@@ -678,7 +676,7 @@ app.controller('perfilController', [
     };
 
     // Cancelar reserva
-    $scope.removeReservation = function() {
+    $scope.removeReservation = function () {
       const url =
         'api/reservations/' + $scope.selectedReservationId + '/cancel';
       httpFactory.auth(url, 'PUT').then(function success(response) {
@@ -689,7 +687,7 @@ app.controller('perfilController', [
     };
 
     // Ir a reserva si es la actual
-    $scope.goToObservation = function() {
+    $scope.goToObservation = function () {
       $scope.reservationActualError = false;
       httpFactory.auth('api/reservations/actual', 'GET').then(
         function success(response) {
@@ -717,7 +715,7 @@ app.controller('observacionController', [
   '$interval',
   'httpFactory',
   'userFactory',
-  function($scope, $sce, $http, $interval, httpFactory, userFactory) {
+  function ($scope, $sce, $http, $interval, httpFactory, userFactory) {
     // Tiempo restante reserva
     $scope.timeLeft = '';
     let stopInterval;
@@ -780,7 +778,7 @@ app.controller('observacionController', [
     }
 
     // Obtener foto
-    $scope.takePhoto = function() {
+    $scope.takePhoto = function () {
       httpFactory
         .auth('api/camera/takePhoto', 'POST')
         .then(function successCallback(response) {
@@ -796,24 +794,32 @@ app.controller('observacionController', [
     $scope.coordinates.rightAscension = '';
     $scope.coordinates.declination = '';
 
-    $scope.sendCoordinates = function() {
+    $scope.sendCoordinates = function () {
       httpFactory.auth('api/mount/move', 'PUT', $scope.coordinates);
     };
 
-    $scope.moveUP = function() {
-      httpFactory.auth('api/mount/step', 'POST', { direction: 'Up' });
+    $scope.moveUP = function () {
+      httpFactory.auth('api/mount/step', 'POST', {
+        direction: 'Up'
+      });
     };
 
-    $scope.moveDown = function() {
-      httpFactory.auth('api/mount/step', 'POST', { direction: 'Down' });
+    $scope.moveDown = function () {
+      httpFactory.auth('api/mount/step', 'POST', {
+        direction: 'Down'
+      });
     };
 
-    $scope.moveRight = function() {
-      httpFactory.auth('api/mount/step', 'POST', { direction: 'Right' });
+    $scope.moveRight = function () {
+      httpFactory.auth('api/mount/step', 'POST', {
+        direction: 'Right'
+      });
     };
 
-    $scope.moveLeft = function() {
-      httpFactory.auth('api/mount/step', 'POST', { direction: 'Left' });
+    $scope.moveLeft = function () {
+      httpFactory.auth('api/mount/step', 'POST', {
+        direction: 'Left'
+      });
     };
 
     // Parametros de la camara
@@ -822,17 +828,17 @@ app.controller('observacionController', [
     $scope.param.gamma = 50;
     $scope.param.exposure = 1;
 
-    $scope.confPhoto = function() {
+    $scope.confPhoto = function () {
       httpFactory.auth('api/camera/status', 'PUT', $scope.param);
     };
 
     // Abrir cupula
-    $scope.openDome = function() {
+    $scope.openDome = function () {
       httpFactory.auth('api/dome/open', 'PUT');
     };
 
     // Cerrar cupula
-    $scope.closeDome = function() {
+    $scope.closeDome = function () {
       httpFactory.auth('api/dome/close', 'PUT');
     };
   }
@@ -845,7 +851,7 @@ app.controller('recoverypasswordController', [
   '$http',
   'authFactory',
   'userFactory',
-  function($rootScope, $scope, $sce, $http, authFactory, userFactory) {
+  function ($rootScope, $scope, $sce, $http, authFactory, userFactory) {
     $('#form-login').hide();
     $('#form-register').hide();
     $('#h2_log').hide();
@@ -858,7 +864,7 @@ app.controller('recoverypasswordController', [
     $scope.recoveryPassword = {};
     $scope.recoveryPassword.error = false;
 
-    $scope.toRecoveryPassword = function() {
+    $scope.toRecoveryPassword = function () {
       // Peticion REST comprobar el email.
       // to-do
       $('#recoveryPassword').show();
@@ -871,7 +877,7 @@ app.controller('imagesController', [
   '$scope',
   '$sce',
   '$http',
-  function($scope, $sce, $http) {
+  function ($scope, $sce, $http) {
     // Get test pictures
     // Resolution: 1280 * 960
     pictures = [];
@@ -880,11 +886,11 @@ app.controller('imagesController', [
     }
     $scope.pictures = pictures;
     $scope.showFullScreenImg = false;
+    $scope.showDescription = false;
     $scope.viewImages = true;
 
     //Get conf
-    $scope.observations = [
-      {
+    $scope.observations = [{
         'time': new Date(),
         'user': 'Random 1',
         'tags': ['Saturno', 'cielo']
@@ -892,20 +898,20 @@ app.controller('imagesController', [
       {
         'time': new Date(),
         'user': 'Random 2',
-        'tags': ['moon', 'night', 'close-moon', 'moon', 'night', 'close-moon',]
+        'tags': ['moon', 'night', 'close-moon', 'moon', 'night', 'close-moon', ]
       }
     ]
     $scope.viewConf = false;
 
     $scope.switchActiveTab = (page) => {
-      if(page === 'img'){
+      if (page === 'img') {
         $('.img').addClass('active');
         $('.conf').removeClass('active');
         $scope.viewImages = true;
         $scope.viewConf = false;
-      }else if(page === 'conf'){
+      } else if (page === 'conf') {
         $('.conf').addClass('active');
-        $('.img').removeClass('active');     
+        $('.img').removeClass('active');
         $scope.viewImages = false;
         $scope.viewConf = true;
       }
@@ -982,13 +988,13 @@ app.controller('imagesController', [
     };
 
     $scope.isShareOpen = false;
-    $scope.toggleShareOptions = () => {      
-      if($scope.isShareOpen)
+    $scope.toggleShareOptions = () => {
+      if ($scope.isShareOpen)
         $scope.showShareOptions(0, 'hidden', '-20px')
       else
         $scope.showShareOptions(1, 'inherit', '1px')
     }
-    
+
     $scope.showShareOptions = (opacity, visibility, mtop) => {
       $scope.isShareOpen = !$scope.isShareOpen;
       let shareOptions = document.getElementById('shareOptions');
@@ -997,7 +1003,7 @@ app.controller('imagesController', [
       shareOptions.style.setProperty('--mtop', mtop);
     }
 
-    $scope.downloadImg = () => {      
+    $scope.downloadImg = () => {
       var anchor = angular.element('<a/>');
       anchor.attr({
         href: $scope.imageUrl,

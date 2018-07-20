@@ -16,11 +16,19 @@
 
     <div class="picture-full-screen" ng-if="showFullScreenImg">
         <div class="overlay-close" ng-click="closeImg()"></div>
-        <img id="img-fullscreen" class="img-fullscreen" src="{{imageUrl}}" alt="Foto tomada por OFS">
+        <div class="img">
+            <img id="img-fullscreen" ng-mouseover="showDescription = true" ng-mouseleave="showDescription = false" class="img-fullscreen"
+                src="{{imageUrl}}" alt="Foto tomada por OFS">
+        </div>
+        <div ng-if="showDescription" class="description">
+            <span>#Saturno #OFS</span>
+        </div>
         <nav class="options">
             <ul class="list">
                 <li>
-                    <a href="{{imageUrl}}" download><i class="fa fa-download" aria-hidden="true"></i></a>
+                    <a href="{{imageUrl}}" download>
+                        <i class="fa fa-download" aria-hidden="true"></i>
+                    </a>
                 </li>
                 <li ng-click="toggleShareOptions()">
                     <i class="fa fa-share-alt" aria-hidden="true"></i>
@@ -64,6 +72,6 @@
             <div class="tags">
                 <span ng-repeat="tag in observation.tags track by $index">#{{tag}}</span>
             </div>
-        </div>  
+        </div>
     </div>
 </div>
