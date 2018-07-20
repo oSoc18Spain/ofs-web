@@ -5,9 +5,35 @@
         Imágenes
     </li>
     <li class="conf" ng-click="switchActiveTab('conf')">
-        Configuración
+        Mis imágenes
     </li>
 </ul>
+
+<form action="">
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="input-group" style="margin-top:20px;">
+                <input type="text" class="form-control" placeholder="Buscar imágenes" aria-label="...">
+                <div class="input-group-btn">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Buscar por
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li>
+                            <a href="#">Nombre de usuario</a>
+                        </li>
+                        <li>
+                            <a href="#">Tags</a>
+                        </li>
+                        <li>
+                            <a href="#">Otra cosa</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
 
 <div class="views-images" ng-if="viewImages">
     <div class="pictures">
