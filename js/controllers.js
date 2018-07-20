@@ -880,9 +880,10 @@ app.controller('imagesController', [
   function ($scope, $sce, $http) {
     // Get test pictures
     // Resolution: 1280 * 960
+    pictures_id = ['1pLROvOVU9mQE2WjKLystbURuemB-hCcw', '1x4ZIYO3PnqWuMhdTZFmfStNPWIEc6giu', '1FuvR1fRg49rhHf28eNP0pbNPlT3Rfol3', '1alcUY1yhuCAC3OjOchlpbOxUs0T8hx5s', '1CSWvltFyhEAicbmNCfP94oLj6APlHn5-', '19I2u5ypw-SjHUMmVDh-6s5SMSF5cOKMy', '1FyOn0x9xNSEwV12x60As0h56xoKlFzJN', '1Y3SRZ5n8JdyJpz0ZdJIYVRlkEUASSFYw', '1RyPsy5sSjnx1COyG0KQsioienNsYSV9w', '12GvH-h0jfXHZEniqTuO77fWMpOUoDqv8']
     pictures = [];
-    for (let i = 1; i <= 11; i++) {
-      pictures[i - 1] = `img_test/img (${i}).jpg`;
+    for (let i = 0; i < pictures_id.length; i++) {
+      pictures[i] = `https://lh3.google.com/u/0/d/${pictures_id[i]}`;
     }
     $scope.pictures = pictures;
     $scope.showFullScreenImg = false;
