@@ -981,6 +981,19 @@ app.controller('imagesController', [
           margin: '0 10px'
         });
       }, 1);
+
+      //change url for sharing
+      setTimeout(() => {
+
+        let sharing_text = 'Mira que foto desde @ciclopegroup.'
+        let tw_url = `https://twitter.com/intent/tweet?url=${$scope.imageUrl}&text=${sharing_text}`;
+        let fb_url = `https://www.facebook.com/sharer/sharer.php?u=${$scope.imageUrl}`;
+
+        $('.share-img_tw').attr('href', tw_url);
+        $('.share-img_fb').attr('href', fb_url);
+      }, 100)
+
+      //let fb_url = ''
     };
 
     $scope.closeImg = () => {
@@ -1005,11 +1018,13 @@ app.controller('imagesController', [
     }
 
     $scope.downloadImg = () => {
-      var anchor = angular.element('<a/>');
-      anchor.attr({
-        href: $scope.imageUrl,
-        download: 'fileName.png'
-      })[0].click();
+      var a = document.createElement('a');
+      a.href = $scope.imageUrl;
+      a.target = "_blank";
+      a.download = "output.png";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
     }
   }
   //https://twitter.com/intent/tweet?url=https%3A//youtu.be/zEf423kYfqk&text=bonita foto

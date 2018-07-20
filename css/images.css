@@ -76,6 +76,7 @@
   cursor: pointer;
   z-index: 1;
   padding: 15px 20px;
+  color: #fff;
 }
 
 .options li i:hover {

@@ -53,6 +53,14 @@ h6 {
     font-family: 'Roboto-Bold';
 }
 
+#logo img {
+    max-width: 100px;
+}
+
+.logo_upm img {
+    height: 50px;
+}
+
 .robot-b {
     font-family: 'Roboto-bold';
 }
